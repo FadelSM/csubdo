@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CSubdomain FadelSM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <svg class="logo-small" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="var(--secondary)" stroke-width="1.5"/>
+                    <path d="M30 50 L50 30 L70 50 L50 70 Z" fill="var(--accent)" opacity="0.8"/>
+                    <circle cx="50" cy="50" r="8" fill="var(--primary)"/>
+                </svg>
+                <h2>CSubdomain</h2>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#" data-section="create" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                        <span>Create Subdomain</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="apikey" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span>API Key</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="docs" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span>Documentation</span>
+                    </a>
+                </li>
+                <li class="nav-item logout">
+                    <a href="#" id="logoutBtn" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="header">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                
+                <div class="user-info">
+                    <span id="userDisplay">Welcome, User</span>
+                    <div class="limit-indicator">
+                        <span>Limit: <span id="userLimit">0</span>/50</span>
+                        <div class="limit-bar">
+                            <div class="limit-fill" id="limitFill"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <section id="createSection" class="content-section active">
+                <div class="section-header">
+                    <h1>Create Subdomain</h1>
+                    <p>Manage your subdomains with ease</p>
+                </div>
+                
+                <div class="form-card">
+                    <form id="subdomainForm">
+                        <div class="form-group">
+                            <label for="subdomainName">Subdomain Name</label>
+                            <input type="text" id="subdomainName" placeholder="your-subdomain" required>
+                            <span class="input-hint">Only alphanumeric characters and hyphens allowed</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="targetIP">Target IP Address</label>
+                            <input type="text" id="targetIP" placeholder="192.168.1.1" required>
+                            <span class="input-hint">Enter the IP address for your subdomain</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="domainSelect">Select Domain</label>
+                            <select id="domainSelect" required>
+                                <option value="">Choose a domain</option>
+                                <option value="vortexx.web.id">vortexx.web.id</option>
+                                <option value="kelazzz.biz.id">kelazzz.biz.id</option>
+                                <option value="joomods.web.id">joomods.web.id</option>
+                                <option value="liinode.biz.id">liinode.biz.id</option>
+                                <option value="blademoon.my.id">blademoon.my.id</option>
+                                <option value="rezeemd.my.id">rezeemd.my.id</option>
+                                <option value="pteroodctly.my.id">pteroodctly.my.id</option>
+                                <option value="kaylapanel.my.id">kaylapanel.my.id</option>
+                                <option value="digitalzocean.biz.id">digitalzocean.biz.id</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Create Subdomain</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="subdomain-list">
+                    <h3>Your Subdomains</h3>
+                    <div id="subdomainList" class="list-container">
+ 
+                    </div>
+                </div>
+            </section>
+            
+            <section id="apikeySection" class="content-section">
+                <div class="section-header">
+                    <h1>API Key</h1>
+                    <p>Your personal API key for programmatic access</p>
+                </div>
+                
+                <div class="api-card">
+                    <div class="api-key-display">
+                        <label>Your API Key</label>
+                        <div class="key-container">
+                            <input type="text" id="apiKeyDisplay" readonly>
+                            <button id="copyApiKey" class="copy-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2m4 0v4m0-4h-4m4 4l-4-4m4 4l4 4"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <button id="regenerateApiKey" class="regenerate-btn">Regenerate API Key</button>
+                    </div>
+                    
+                    <div class="api-usage">
+                        <h4>API Usage</h4>
+                        <p>Endpoint: <code>POST /api/create-subdomain</code></p>
+                        <p>Headers: <code>Authorization: Bearer YOUR_API_KEY</code></p>
+                        <p>Body: <code>{"subdomain": "name", "ip": "1.2.3.4", "domain": "example.com"}</code></p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="docsSection" class="content-section">
+                <div class="section-header">
+                    <h1>API Documentation</h1>
+                    <p>Complete guide to using our API</p>
+                </div>
+                
+                <div class="docs-content">
+                    <div class="doc-section">
+                        <h3>Authentication</h3>
+                        <p>All API requests require your API key in the Authorization header:</p>
+                        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                    </div>
+                    
+                    <div class="doc-section">
+                        <h3>Create Subdomain</h3>
+                        <p><strong>Endpoint:</strong> <code>POST /api/create-subdomain</code></p>
+                        <p><strong>Body:</strong></p>
+                        <pre><code>{
+    "subdomain": "your-subdomain",
+    "ip": "192.168.1.1",
+    "domain": "vortexx.web.id"
+}</code></pre>
+                        <p><strong>Response:</strong></p>
+                        <pre><code>{
+    "success": true,
+    "message": "Subdomain created successfully",
+    "data": {
+        "subdomain": "your-subdomain.vortexx.web.id",
+        "ip": "192.168.1.1"
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="doc-section">
+                        <h3>Error Codes</h3>
+                        <ul>
+                            <li><code>400</code> - Invalid request parameters</li>
+                            <li><code>401</code> - Invalid API key</li>
+                            <li><code>403</code> - Limit exceeded</li>
+                            <li><code>409</code> - Subdomain already exists</li>
+                            <li><code>500</code> - Internal server error</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="ipWarningModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Security Alert</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                <h4>Access Restricted</h4>
+                <p>Your account can only be accessed from the IP address you used during login. This is a security measure to protect your account.</p>
+                <p><strong>Current IP:</strong> <span id="currentIP"></span></p>
+                <p><strong>Registered IP:</strong> <span id="registeredIP"></span></p>
+                <p>If you need to access from a different location, please contact the administrator.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

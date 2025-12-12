@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CSubdomain FadelSM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <svg class="logo-small" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="var(--secondary)" stroke-width="1.5"/>
+                    <path d="M30 50 L50 30 L70 50 L50 70 Z" fill="var(--accent)" opacity="0.8"/>
+                    <circle cx="50" cy="50" r="8" fill="var(--primary)"/>
+                </svg>
+                <h2>Admin Panel</h2>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#" data-section="users" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                        </svg>
+                        <span>Manage Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="subdomains" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                        <span>All Subdomains</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="create" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                        <span>Create Subdomain</span>
+                    </a>
+                </li>
+                <li class="nav-item logout">
+                    <a href="#" id="logoutBtn" class="nav-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="header">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                
+                <div class="user-info">
+                    <span>Administrator</span>
+                </div>
+            </header>
+ 
+            <section id="usersSection" class="content-section active">
+                <div class="section-header">
+                    <h1>Manage Users</h1>
+                    <p>View and manage all users</p>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>IP Address</th>
+                                <th>Limit Used</th>
+                                <th>Max Limit</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+ 
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="subdomainsSection" class="content-section">
+                <div class="section-header">
+                    <h1>All Subdomains</h1>
+                    <p>View all subdomains across all users</p>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Subdomain</th>
+                                <th>IP Address</th>
+                                <th>Owner</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subdomainsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="createSection" class="content-section">
+                <div class="section-header">
+                    <h1>Create Subdomain (Admin)</h1>
+                    <p>Create subdomains without limits</p>
+                </div>
+                
+                <div class="form-card">
+                    <form id="adminSubdomainForm">
+                        <div class="form-group">
+                            <label for="adminSubdomainName">Subdomain Name</label>
+                            <input type="text" id="adminSubdomainName" placeholder="your-subdomain" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adminTargetIP">Target IP Address</label>
+                            <input type="text" id="adminTargetIP" placeholder="192.168.1.1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adminDomainSelect">Select Domain</label>
+                            <select id="adminDomainSelect" required>
+                                <option value="">Choose a domain</option>
+                                <option value="vortexx.web.id">vortexx.web.id</option>
+                                <option value="kelazzz.biz.id">kelazzz.biz.id</option>
+                                <option value="joomods.web.id">joomods.web.id</option>
+                                <option value="liinode.biz.id">liinode.biz.id</option>
+                                <option value="blademoon.my.id">blademoon.my.id</option>
+                                <option value="rezeemd.my.id">rezeemd.my.id</option>
+                                <option value="pteroodctly.my.id">pteroodctly.my.id</option>
+                                <option value="kaylapanel.my.id">kaylapanel.my.id</option>
+                                <option value="digitalzocean.biz.id">digitalzocean.biz.id</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Create Subdomain</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit User</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="editUsername">Username</label>
+                        <input type="text" id="editUsername" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMaxLimit">Max Limit</label>
+                        <input type="number" id="editMaxLimit" min="0" max="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editUserIP">IP Address</label>
+                        <input type="text" id="editUserIP" readonly>
+                    </div>
+                    <button type="submit" class="submit-btn">Update User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>
